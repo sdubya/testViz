@@ -1,0 +1,107 @@
+PROCEDURE_ID,ENCOUNTER_ID,PROCEDURE_CD,PROCEDURE_DSC,PROCEDURE_DTS
+"88,213","110,371",med,Medication Administration,01/03/2007 14:01:04
+"88,214","110,371",img,Radiology Image,01/03/2007 14:24:27
+"88,215","110,371",vac,Vaccination,01/03/2007 14:00:10
+"88,216","110,378",med,Medication Administration,01/17/2007 16:40:52
+"88,217","110,378",vac,Vaccination,01/17/2007 16:47:23
+"88,218","110,385",wnd,Wound Dressing,01/30/2007 16:35:05
+"88,219","110,385",img,Radiology Image,01/30/2007 16:15:02
+"88,220","110,385",cst,Cast,01/30/2007 16:20:05
+"88,221","110,385",wnd,Wound Dressing,01/30/2007 16:20:55
+"88,222","110,392",med,Medication Administration,02/02/2007 18:22:36
+"88,223","110,399",bio,Biopsy,02/09/2007 13:33:56
+"88,224","110,406",phy,Physical Examination,02/18/2007 14:07:27
+"88,228","110,420",med,Medication Administration,03/01/2007 12:57:35
+"88,229","110,420",phy,Physical Examination,03/01/2007 12:54:12
+"88,230","110,427",wnd,Wound Dressing,03/05/2007 11:37:10
+"88,231","110,427",str,Suture,03/05/2007 12:00:07
+"88,232","110,427",img,Radiology Image,03/05/2007 11:34:54
+"88,233","110,434",img,Radiology Image,03/11/2007 16:52:13
+"88,234","110,441",bio,Biopsy,03/13/2007 13:17:22
+"88,235","110,448",med,Medication Administration,03/21/2007 13:50:48
+"88,236","110,448",bio,Biopsy,03/21/2007 13:28:29
+"88,237","110,455",wnd,Wound Dressing,03/24/2007 15:22:42
+"88,238","110,455",img,Radiology Image,03/24/2007 15:05:23
+"88,239","110,462",ekg,Electrocardiogram,03/27/2007 13:55:59
+"88,240","110,469",Clt,Culture,03/31/2007 08:44:35
+"88,241","110,469",med,Medication Administration,03/31/2007 09:18:45
+"88,242","110,476",med,Medication Administration,04/13/2007 14:05:12
+"88,243","110,476",clt,Culture,04/13/2007 14:04:14
+"88,244","110,483",phy,Physical Examination,04/20/2007 11:10:58
+"88,245","110,490",ekg,Electrocardiogram,05/02/2007 13:58:20
+"88,246","110,497",ekg,Electrocardiogram,05/08/2007 13:02:02
+"88,247","110,497",img,Radiology Image,05/08/2007 13:05:34
+"88,248","110,497",med,Medication Administration,05/08/2007 13:05:41
+"88,249","110,497",phy,Physical Examination,05/08/2007 12:58:24
+"88,250","110,504",ekg,Electrocardiogram,05/10/2007 08:49:04
+"88,251","110,511",cst,Cast,05/11/2007 17:32:57
+"88,252","110,511",wnd,Wound Dressing,05/11/2007 17:38:58
+"88,253","110,511",img,Radiology Image,05/11/2007 17:19:08
+"88,254","110,511",wnd,Wound Dressing,05/11/2007 17:20:13
+"88,255","110,511",clt,Culture,05/11/2007 17:52:48
+"88,256","110,511",str,Suture,05/11/2007 17:34:56
+"88,257","110,518",clt,Culture,05/16/2007 16:59:30
+"88,258","110,525",str,Suture,05/17/2007 17:02:53
+"88,259","110,525",ekg,Electrocardiogram,05/17/2007 17:11:04
+"88,260","110,532",med,Medication Administration,05/19/2007 13:33:26
+"88,261","110,532",Clt,Culture,05/19/2007 13:21:38
+"88,262","110,539",phy,Physical Examination,05/21/2007 18:05:02
+"88,263","110,546",med,Medication Administration,05/25/2007 14:10:14
+"88,264","110,546",ekg,Electrocardiogram,05/25/2007 14:33:10
+"88,265","110,546",img,Radiology Image,05/25/2007 14:07:28
+"88,266","110,553",med,Medication Administration,05/29/2007 10:54:04
+"88,267","110,560",wnd,Wound Dressing,06/04/2007 10:33:20
+"88,268","110,560",img,Radiology Image,06/04/2007 10:07:00
+"88,269","110,567",wrt,Wart Removal,06/17/2007 14:57:35
+"88,270","110,567",phy,Physical Examination,06/17/2007 15:12:36
+"88,271","110,574",med,Medication Administration,06/22/2007 13:27:53
+"88,272","110,574",phy,Physical Examination,06/22/2007 13:15:04
+"88,274","110,588",phy,Physical Examination,08/12/2007 11:14:05
+"88,275","110,588",ekg,Electrocardiogram,08/12/2007 10:56:05
+"88,276","110,595",img,Radiology Image,08/16/2007 13:20:55
+"88,277","110,595",cst,Cast,08/16/2007 13:24:31
+"88,278",,wnd,Wound Dressing,08/16/2007 13:28:02
+"88,279","110,602",med,Medication Administration,08/21/2007 17:29:38
+"88,280","110,609",,,08/27/2007 15:34:04
+"88,281","110,609",wnd,Wound Dressing,08/27/2007 15:23:15
+"88,282","110,609",img,Radiology Image,08/27/2007 15:33:28
+"88,283","110,609",wnd,Wound Dressing,08/27/2007 15:07:15
+"88,284","110,616",img,Radiology Image,09/23/2007 08:51:53
+"88,285","110,616",ekg,Electrocardiogram,09/23/2007 09:23:46
+"88,286","110,623",img,Radiology Image,09/26/2007 17:23:03
+"88,287","110,623",cst,Cast,09/26/2007 17:39:59
+"88,288","110,630",med,Medication Administration,09/28/2007 13:32:26
+"88,289","110,637",wrt,Wart Removal,09/30/2007 13:53:17
+"88,290","110,644",str,Suture,10/09/2007 14:21:45
+"88,291","110,644",med,Medication Administration,10/09/2007 14:28:03
+"88,292","110,651",wrt,Wart Removal,10/13/2007 16:04:37
+"88,293","110,658",med,Medication Administration,10/18/2007 11:54:03
+"88,294","110,658",wrt,Wart Removal,10/18/2007 11:22:31
+"88,295","110,665",wrt,Wart Removal,10/23/2007 11:15:36
+"88,296","110,665",phy,Physical Examination,10/23/2007 11:50:08
+"88,297","110,672",bio,Biopsy,10/28/2007 11:11:18
+"88,298","110,672",img,Radiology Image,10/28/2007 10:46:36
+"88,299","110,679",vac,Vaccination,11/05/2007 13:41:11
+"88,300","110,686",,,11/07/2007 08:17:50
+"88,301","110,693",img,Radiology Image,11/08/2007 14:15:38
+"88,302","110,693",cst,Cast,11/08/2007 14:38:25
+"88,303","110,693",wnd,Wound Dressing,11/08/2007 14:15:52
+"88,304","110,693",str,Suture,11/08/2007 14:34:21
+"88,305","110,700",clt,Culture,11/19/2007 12:46:24
+"88,306","110,707",med,Medication Administration,11/20/2007 15:59:42
+"88,307","110,714",cst,Cast,11/22/2007 14:03:25
+"88,308","110,714",img,Radiology Image,11/22/2007 14:02:01
+"88,311","110,728",,,12/04/2007 09:53:13
+"88,312","110,728",,,12/04/2007 09:44:16
+"88,313","110,735",img,Radiology Image,12/07/2007 14:14:22
+"88,314","110,735",med,Medication Administration,12/07/2007 14:08:49
+"88,315","110,742",med,Medication Administration,12/15/2007 17:44:03
+"88,316","110,749",wrt,Wart Removal,12/18/2007 15:46:07
+"88,317","110,749",med,Medication Administration,12/18/2007 15:59:27
+"88,318","110,756",phy,Physical Examination,12/22/2007 10:17:43
+"88,319","110,763",phy,Physical Examination,12/23/2007 13:48:23
+"88,320","110,770",img,Radiology Image,12/27/2007 10:55:51
+"88,321","110,770",ekg,Electrocardiogram,12/27/2007 11:01:33
+"88,322","110,777",med,Medication Administration,12/28/2007 09:48:23
+"88,323","110,777",Clt,Culture,12/28/2007 09:38:54
+"88,324","110,784",phy,Physical Examination,12/31/2007 12:12:15

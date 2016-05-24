@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+  font: 10px sans-serif;
+}
+.y.axisRight text {
+    fill: orange;
+}
+.y.axisLeft text {
+    fill: #444444;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.bar1 {
+  fill: #444444;
+}
+.bar1:hover {
+  fill: grey;
+}
+.bar2 {
+  fill: #990011;
+}
+.bar2:hover {
+  fill: grey;
+}
+.x.axis path {
+  display: none;
+}
+
+td, th {
+    padding: 1px 4px;
+}
+
+#area1{
+	
+	font: 9px sans-serif;
+	}
+
+#area2{
+	float:left;
+	left:50%
+	position: relative;
+	font: 12px sans-serif;
+	
+	}
+.area2 {
+	display:none;
+	}
+
+</style>
+<body>
+<script type="text/javascript" src="scripts/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="scripts/d3.js"></script>
+<link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+<!--<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="//code.jquery.com/jquery-latest.js"></script>-->
+<script type="text/javascript" src="scripts/featherlight.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<div class="container">
+
+<div class="page-header">
+<div class="btn-group">
+	<a href="index.html" type="button" class="btn btn-default btn-md">
+          <span class="glyphicon glyphicon-home"></span>
+        </a>
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" >
+    <li><a href="PatientChart.html">Patient Chart</a></li>
+    <li><a href="EncounterChart.html">Encounter Chart</a></li>
+  </ul>
+	</div>
+	
+	<h1> Physician Chart</h1>
+	
+</div>
+</div>
+
+<div class="container">  
+	 <div class="col-md-3" id="area1">      
+	  </div>    
+    </div>
+    <div class="clearfix visible-lg"></div>
+  </div>
+<div class="area2" id="area2">
+      
+	  </div>
+
+<script>
+var margin = {top: 80, right: 80, bottom: 80, left: 80},
+    width = 800 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+var y0 = d3.scale.linear()/*.domain([300, 1100])*/.range([height, 0]);
+	//y1 = d3.scale.linear()/*.domain([20, 80])*/.range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+// create left yAxis
+var yAxisLeft = d3.svg.axis().scale(y0).ticks(4).orient("left");
+// create right yAxis
+var yAxisRight = d3.svg.axis().scale(y0).ticks(6).orient("right");
+
+var svg = d3.select("#area1").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("class", "graph")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+	;
+
+
+d3.csv("combined2.csv", function(error, csv_data) {
+
+csv_data.forEach(function(d) {
+		d.PROVIDER_LAST_NM= d.PROVIDER_LAST_NM.toUpperCase();
+	});	
+
+	//Groups data by provider name and ID
+	var data2= d3.nest()
+		.key(function(d){ return d.PROVIDER_LAST_NM;}).sortKeys(d3.ascending)
+		.key(function(d){ return d.PROVIDER_ID;})
+		.rollup(function(d)	{
+					return {"charge" : d3.sum(d, function(g) {return g.TOTAL_CHARGE_AMT; }), "balance" : d3.sum(d, function(g) {return g.TOTAL_BALANCE_AMT; })} 
+					})
+		.entries(csv_data);
+		//console.log(data2);
+	
+
+	//Creates the table and then filters based on selected provider ID
+	function drill(d, i) {
+        
+		filter=d.values[0].key;
+		
+		peopleTable=tabulate(csv_data, ["PROVIDER_ID", "PROCEDURE_DTS", "PROCEDURE_DSC"], filter);
+        }	
+
+  x.domain(data2.map(function(d) { return d.key; }));
+  y0.domain([0, d3.max(data2, function(d) { return Math.max(d.values[0].values.charge, d.values[0].values.balance); })]);
+  
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+  svg.append("g")
+	  .attr("class", "y axis axisLeft")
+	  .attr("transform", "translate(0,0)")
+	  .call(yAxisLeft)
+	.append("text")
+	  .attr("y", 6)
+	  .attr("dy", "-2em")
+	  .style("text-anchor", "end")
+	  .style("text-anchor", "end")
+	  .text("Dollars");
+	  
+  bars = svg.selectAll(".bar").data(data2).enter();
+  
+  //bars.append("rect")
+	bars.append("a").attr("xlink:href", "#").append("rect")
+	.attr("data-featherlight", "#area2")
+      .attr("class", "bar1")
+	  .attr("id", "bars")
+      .attr("x", function(d) { return x(d.key); })
+      .attr("width", x.rangeBand()/2)
+      .attr("y", function(d) { return y0(d.values[0].values.charge); })
+	  .attr("height", function(d,i,j) { return height - y0(d.values[0].values.charge); })
+	  //.html("<a href='google.com' ></a>")
+	  //.on("click", drill)
+	  .on("click", function(d)	{
+			filter=d.values[0].key;
+			peopleTable=tabulate(csv_data, ["PROVIDER_ID", "PROCEDURE_DTS", "PROCEDURE_DSC"], filter);
+			})
+	  ;
+	    
+  bars.append("rect")
+      .attr("class", "bar2")
+      .attr("x", function(d) { return x(d.key) + x.rangeBand()/2; })
+      .attr("width", x.rangeBand() / 2)
+      .attr("y", function(d) { return y0(d.values[0].values.balance); })
+	  .attr("height", function(d,i,j) { return height - y0(d.values[0].values.balance); })
+	  //.on("click", drill)
+	  .on("click", function(d)	{
+			filter=d.values[0].key;
+			peopleTable=tabulate(csv_data, ["PROVIDER_ID", "PROCEDURE_DTS", "PROCEDURE_DSC"], filter);
+			})
+	  ; 
+	  
+	
+	  
+	  
+function tabulate(data, columns, filter) {
+	d3.selectAll("table").remove();//removes previous table
+	
+    var table = d3.select("#area2").append("table")
+	//.attr("width", width + margin.left + margin.right)
+    //.attr("height", height + margin.top + margin.bottom),
+            .attr("style", "margin-left: auto")
+			.attr("style", "margin-right: auto"),
+        thead = table.append("thead"),
+        tbody = table.append("tbody");
+
+    // append the header row
+    thead.append("tr")
+        .selectAll("th")
+        .data(columns)
+        .enter()
+        .append("th")
+            .text(function(column) { return column; });
+
+    // create a row for each object in the data
+    var rows = tbody.selectAll("tr")
+        .data(data)
+        .enter()
+        .append("tr")
+		.attr("class", "tRows")
+		.filter(function(d) {return d.PROVIDER_ID == filter})//filters the table
+		;
+
+    // create a cell in each row for each column
+    var cells = rows.selectAll("td")
+        .data(function(row) {
+            return columns.map(function(column) {
+                return {column: column, value: row[column]};
+            });
+        })
+        .enter()
+        .append("td")
+        .attr("style", "font-family: Courier") // sets the font style
+            .html(function(d) { return d.value; });
+	
+	
+    
+    return table;
+}	  
+		
+	//placeholder for table variable
+	var peopleTable;
+	
+	
+	
+});
+
+$(document).ready(function(){
+    $("#bars").click(function(){
+        $("#area2").toggle();
+    });
+});
+
+
+
+
+
+</script>

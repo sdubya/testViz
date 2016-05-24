@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+	<style>
+
+	.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+path { 
+    stroke: #336699;
+    stroke-width: 2;
+    fill: none;
+}
+
+#button{
+	float:left;
+	left:50%
+	position: relative;
+	
+	}
+.form {
+	display:none;
+	}
+
+	</style>
+</head>
+
+<body onload="drawViz()">
+<script type="text/javascript" src="scripts/jquery-1.12.0.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="scripts/d3.js"></script>
+<script type="text/javascript" src="scripts/featherlight.min.js"></script>
+<link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<div class="container">
+
+<div class="page-header">
+<div class="btn-group">
+	<a href="index.html" type="button" class="btn btn-default btn-md">
+          <span class="glyphicon glyphicon-home"></span>
+        </a>
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" >
+    <li><a href="PatientChart.html">Patient Chart</a></li>
+    <li><a href="PhysicianChart.html">Physician Chart</a></li>
+  </ul>
+	</div>
+
+	<h1> Encounter Count</h1>
+</div>
+</div>
+<div class="container">
+	
+	<div id="area1">
+</div>
+
+	</div>
+<div class="container">
+<div id="button">
+	<div  id="form">
+	<p>
+            Encounter ID: <input type="text" id="EID" maxlength="6" size="6" />
+            <br />
+            Encounter Date: <input type="text" id="EDate" />
+            <br />
+            Procedure ID: <input type="text" id="PID" maxlength="6" size="6" />
+            <br />
+			Procedure DSC: <input type="text" id="PDSC" />
+            <br />
+			Procedure Date: <input type="text" id="PDate" />
+            <br />
+			
+           <!-- <input type="button" id="addButton" value="Add to CSV File" onClick="javascript: addToCSVFile()" />-->
+        </p>
+	</div>
+	<div class="btn-group">
+	<!--<a href='#' data-featherlight="#form" data-featherlight-afterClose="reload();"><button type="button" class="btn" id="submit">Enter Data</button></a>-->
+	<button type="button" class="btn" id="refresh" onclick="addToCSVFile()">Enter Data</button>
+	<button type="button" class="btn" id="refresh" onclick="refreshViz()">Refresh Data</button>
+	
+	</div>
+	</div>
+</div>
+	
+
+<script>
+
+var margin = {top: 20, right: 20, bottom: 70, left: 40},
+    width = 900 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+
+var y = d3.scale.linear().range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(5);
+
+/*var svg = d3.select("#area1").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+	.append("g")
+    .attr("transform", 
+         "translate(" + margin.left + "," + margin.top + ")");*/
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}	  
+	
+//Start of function to draw the viz	
+function drawViz(){
+d3.csv("update.csv", function(error, csv_data) {
+	csv_data.forEach(function(d) {
+	var month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+	
+		d.ENCOUNTER_DTS=parseDate(d.ENCOUNTER_DTS)
+		d.ID=1
+	});	
+	
+	console.log(csv_data);
+	
+		//Data for Encounter Count
+	var data= d3.nest()
+		.key(function(d){ return parseMonth2(d.ENCOUNTER_DTS);})
+		//REmove line below to get procedure count
+		.key(function(d){ return d.ENCOUNTER_ID;})
+		.rollup(function(leaves) { return leaves.length; })
+		.entries(csv_data);
+		console.log(data);
+		
+	//Data to sync the y-axis
+	var data2= d3.nest()
+		.key(function(d){ return parseMonth2(d.ENCOUNTER_DTS);})//.sortKeys(d3.ascending)
+		.rollup(function(leaves) { return leaves.length; })
+		.entries(csv_data);
+		console.log(data2);
+		
+  x.domain(data.map(function(d) { return d.key; }));
+  //y.domain([0, d3.max(data, function(d) { return d.values.length; })]);
+  y.domain([0, d3.max(data2, function(d) { return d.values; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", "-.55em")
+      .attr("transform", "rotate(-90)" );
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Total Encounters");
+
+  svg.selectAll("bar")
+      .data(data)
+    .enter().append("rect")
+      .style("fill", "#628CB6")
+      .attr("x", function(d) { return x(d.key); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.values.length); })
+      .attr("height", function(d) { return height - y(d.values.length); });
+
+});
+
+//////////////////////////////////////////////////////////////////////////////
+
+var parseDate = d3.time.format("%d-%b-%y").parse;
+var parseMonth= d3.time.format("%b");
+var parseMonth2= d3.time.format("%b %y");
+
+var y1 = d3.scale.linear().range([height, 0]);
+
+
+var yAxisRight = d3.svg.axis().scale(y1)
+    .orient("right").ticks(5); 
+    
+var valueline2 = d3.svg.line()
+    .x(function(d) { return x(d.key); })
+    .y(function(d) { return y1(d.values); });
+  
+var svg = d3.select("#area1")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+   // .append("g")
+   //     .attr("transform", 
+   //           "translate(" + margin.left + "," + margin.top + ")");
+
+// Get the data
+d3.csv("update.csv", function(error, csv_data2) {
+    csv_data2.forEach(function(d) {
+	var month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+
+		d.ENCOUNTER_DTS=parseDate(d.ENCOUNTER_DTS)
+		d.ID=1
+	});		
+		
+	//Get the procedure count
+	var data2= d3.nest()
+		.key(function(d){ return parseMonth2(d.ENCOUNTER_DTS);})//.sortKeys(d3.ascending)
+		.rollup(function(leaves) { return leaves.length; })
+		.entries(csv_data2);
+		console.log(data2);
+	
+    // Scale the range of the data
+    
+	x.domain(data2.map(function(d) { return d.key; }));
+	y1.domain([0, d3.max(data2, function(d) { return d.values; })]);   
+
+    svg.append("path")        // Add the valueline2 path.
+		.attr("class", "line")
+        .style("stroke", "#001948")
+		.style("stroke-width", "3")
+        .attr("d", valueline2(data2));
+
+   /* svg.append("g")            // Add the X Axis
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);*/
+	
+
+    svg.append("g")				
+        .attr("class", "y axis")	
+        .attr("transform", "translate(" + width + " ,0)")	
+        //.style("fill", "#001948")		
+        .call(yAxisRight)
+		.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 20)
+		.attr("dy", ".71em")
+		.style("text-anchor", "end")
+		.text("Total Procedures");
+
+});
+}
+
+//function to call when refreshing the Data
+function refreshViz(){
+d3.selectAll("svg").remove();
+drawViz();
+}
+
+//Adding Data to the CSV file
+function addToCSVFile() {
+                var csvData = new Array();  // To collect the names
+				//var csvFilePath = 'C:/Users/sweed/Desktop/Tech Lead/Data.csv';
+				var csvFilePath = 'C:/Users/sweed/Desktop/Tech Lead/Dashboard Files/update.csv';
+
+                // Collecting the names
+                csvData[0] = document.getElementById('EID').value;
+                csvData[1] = document.getElementById('EDate').value;
+                csvData[2] = document.getElementById('PID').value;
+				csvData[3] = document.getElementById('PDSC').value;
+				csvData[4] = document.getElementById('PDate').value;
+
+                var fso = new ActiveXObject('Scripting.FileSystemObject');
+                var oStream = fso.OpenTextFile(csvFilePath, 8, true, 0);
+                oStream.WriteLine(csvData.join(','));
+                oStream.Close();
+                clearData();
+                alert("Data Added Successfully");
+            }
+
+            function clearData() {
+                document.getElementById('EID').value = "";
+                document.getElementById('EDate').value = "";
+                document.getElementById('PID').value = "";
+				document.getElementById('PDSC').value = "";
+				document.getElementById('PDate').value = "";
+            }
+$(function() {
+    $( "#datepicker" ).datepicker({ dateFormat: 'd-M-y' });
+	$( "#EDate" ).datepicker({ dateFormat: 'd-M-y' });
+	$( "#PDate" ).datepicker({ dateFormat: 'd-M-y' });
+	//$( "#datepicker" ).datepicker();
+	 
+	//$.datepicker.formatDate( "yy-mm-dd");
+  });
+  
+
+  
+
+
+
+
+</script>
+</body>
+</html>

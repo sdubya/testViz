@@ -1,0 +1,109 @@
+ENCOUNTER_ID,ENCOUNTER_DTS,PROCEDURE_ID,PROCEDURE_DSC,PROCEDURE_DTS,orig_dt
+110371,12-Dec-14,88213,Medication Administration,3-Jan-07,3-Jan-07
+110371,12-Dec-14,88214,Radiology Image,3-Jan-07,3-Jan-07
+110371,12-Dec-14,88215,Vaccination,3-Jan-07,3-Jan-07
+110378,26-Dec-14,88216,Medication Administration,17-Jan-07,17-Jan-07
+110378,26-Dec-14,88217,Vaccination,17-Jan-07,17-Jan-07
+110385,8-Jan-15,88218,Wound Dressing,30-Jan-07,30-Jan-07
+110385,8-Jan-15,88219,Radiology Image,30-Jan-07,30-Jan-07
+110385,8-Jan-15,88220,Cast,30-Jan-07,30-Jan-07
+110385,8-Jan-15,88221,Wound Dressing,30-Jan-07,30-Jan-07
+110392,11-Jan-15,88222,Medication Administration,2-Feb-07,2-Feb-07
+110399,18-Jan-15,88223,Biopsy,9-Feb-07,9-Feb-07
+110406,27-Jan-15,88224,Physical Examination,18-Feb-07,18-Feb-07
+110420,7-Feb-15,88228,Medication Administration,1-Mar-07,1-Mar-07
+110420,7-Feb-15,88229,Physical Examination,1-Mar-07,1-Mar-07
+110427,11-Feb-15,88230,Wound Dressing,5-Mar-07,5-Mar-07
+110427,11-Feb-15,88231,Suture,5-Mar-07,5-Mar-07
+110427,11-Feb-15,88232,Radiology Image,5-Mar-07,5-Mar-07
+110434,17-Feb-15,88233,Radiology Image,11-Mar-07,11-Mar-07
+110441,19-Feb-15,88234,Biopsy,13-Mar-07,13-Mar-07
+110448,27-Feb-15,88235,Medication Administration,21-Mar-07,21-Mar-07
+110448,27-Feb-15,88236,Biopsy,21-Mar-07,21-Mar-07
+110455,2-Mar-15,88237,Wound Dressing,24-Mar-07,24-Mar-07
+110455,2-Mar-15,88238,Radiology Image,24-Mar-07,24-Mar-07
+110462,5-Mar-15,88239,Electrocardiogram,27-Mar-07,27-Mar-07
+110469,9-Mar-15,88240,Culture,31-Mar-07,31-Mar-07
+110469,9-Mar-15,88241,Medication Administration,31-Mar-07,31-Mar-07
+110476,16-Dec-14,88242,Medication Administration,13-Apr-07,7-Jan-07
+110476,16-Dec-14,88243,Culture,13-Apr-07,7-Jan-07
+110483,29-Mar-15,88244,Physical Examination,20-Apr-07,20-Apr-07
+110490,10-Apr-15,88245,Electrocardiogram,2-May-07,2-May-07
+110497,16-Apr-15,88246,Electrocardiogram,8-May-07,8-May-07
+110497,16-Apr-15,88247,Radiology Image,8-May-07,8-May-07
+110497,16-Apr-15,88248,Medication Administration,8-May-07,8-May-07
+110497,16-Apr-15,88249,Physical Examination,8-May-07,8-May-07
+110504,18-Apr-15,88250,Electrocardiogram,10-May-07,10-May-07
+110511,19-Apr-15,88251,Cast,11-May-07,11-May-07
+110511,19-Apr-15,88252,Wound Dressing,11-May-07,11-May-07
+110511,19-Apr-15,88253,Radiology Image,11-May-07,11-May-07
+110511,19-Apr-15,88254,Wound Dressing,11-May-07,11-May-07
+110511,19-Apr-15,88255,Culture,11-May-07,11-May-07
+110511,19-Apr-15,88256,Suture,11-May-07,11-May-07
+110518,24-Apr-15,88257,Culture,16-May-07,16-May-07
+110525,25-Apr-15,88258,Suture,17-May-07,17-May-07
+110525,25-Apr-15,88259,Electrocardiogram,17-May-07,17-May-07
+110532,27-Apr-15,88260,Medication Administration,19-May-07,19-May-07
+110532,27-Apr-15,88261,Culture,19-May-07,19-May-07
+110539,29-Apr-15,88262,Physical Examination,21-May-07,21-May-07
+110546,3-May-15,88263,Medication Administration,25-May-07,25-May-07
+110546,3-May-15,88264,Electrocardiogram,25-May-07,25-May-07
+110546,3-May-15,88265,Radiology Image,25-May-07,25-May-07
+110553,7-May-15,88266,Medication Administration,29-May-07,29-May-07
+110560,13-May-15,88267,Wound Dressing,4-Jun-07,4-Jun-07
+110560,13-May-15,88268,Radiology Image,4-Jun-07,4-Jun-07
+110567,26-May-15,88269,Wart Removal,17-Jun-07,17-Jun-07
+110567,26-May-15,88270,Physical Examination,17-Jun-07,17-Jun-07
+110574,31-May-15,88271,Medication Administration,22-Jun-07,22-Jun-07
+110574,31-May-15,88272,Physical Examination,22-Jun-07,22-Jun-07
+110588,21-Jul-15,88274,Physical Examination,12-Aug-07,12-Aug-07
+110588,21-Jul-15,88275,Electrocardiogram,12-Aug-07,12-Aug-07
+110595,25-Jul-15,88276,Radiology Image,16-Aug-07,16-Aug-07
+110595,25-Jul-15,88277,Cast,16-Aug-07,16-Aug-07
+110602,30-Jul-15,88279,Medication Administration,21-Aug-07,21-Aug-07
+110609,5-Aug-15,88280,,27-Aug-07,27-Aug-07
+110609,5-Aug-15,88281,Wound Dressing,27-Aug-07,27-Aug-07
+110609,5-Aug-15,88282,Radiology Image,27-Aug-07,27-Aug-07
+110609,5-Aug-15,88283,Wound Dressing,27-Aug-07,27-Aug-07
+110616,10-Aug-15,88284,Radiology Image,23-Sep-07,1-Sep-07
+110616,10-Aug-15,88285,Electrocardiogram,23-Sep-07,1-Sep-07
+110623,4-Sep-15,88286,Radiology Image,26-Sep-07,26-Sep-07
+110623,4-Sep-15,88287,Cast,26-Sep-07,26-Sep-07
+110630,6-Sep-15,88288,Medication Administration,28-Sep-07,28-Sep-07
+110637,8-Sep-15,88289,Wart Removal,30-Sep-07,30-Sep-07
+110644,9-Sep-15,88290,Suture,9-Oct-07,1-Oct-07
+110644,9-Sep-15,88291,Medication Administration,9-Oct-07,1-Oct-07
+110651,21-Sep-15,88292,Wart Removal,13-Oct-07,13-Oct-07
+110658,26-Sep-15,88293,Medication Administration,18-Oct-07,18-Oct-07
+110658,26-Sep-15,88294,Wart Removal,18-Oct-07,18-Oct-07
+110665,1-Oct-15,88295,Wart Removal,23-Oct-07,23-Oct-07
+110665,1-Oct-15,88296,Physical Examination,23-Oct-07,23-Oct-07
+110672,6-Oct-15,88297,Biopsy,28-Oct-07,28-Oct-07
+110672,6-Oct-15,88298,Radiology Image,28-Oct-07,28-Oct-07
+110679,14-Oct-15,88299,Vaccination,5-Nov-07,5-Nov-07
+110686,16-Oct-15,88300,,7-Nov-07,7-Nov-07
+110693,17-Oct-15,88301,Radiology Image,8-Nov-07,8-Nov-07
+110693,17-Oct-15,88302,Cast,8-Nov-07,8-Nov-07
+110693,17-Oct-15,88303,Wound Dressing,8-Nov-07,8-Nov-07
+110693,17-Oct-15,88304,Suture,8-Nov-07,8-Nov-07
+110700,28-Oct-15,88305,Culture,19-Nov-07,19-Nov-07
+110707,29-Oct-15,88306,Medication Administration,20-Nov-07,20-Nov-07
+110714,31-Oct-15,88307,Cast,22-Nov-07,22-Nov-07
+110714,31-Oct-15,88308,Radiology Image,22-Nov-07,22-Nov-07
+110728,24-Jan-15,88311,,4-Dec-07,15-Feb-07
+110728,24-Jan-15,88312,,4-Dec-07,15-Feb-07
+110735,15-Nov-15,88313,Radiology Image,7-Dec-07,7-Dec-07
+110735,15-Nov-15,88314,Medication Administration,7-Dec-07,7-Dec-07
+110742,23-Nov-15,88315,Medication Administration,15-Dec-07,15-Dec-07
+110749,26-Nov-15,88316,Wart Removal,18-Dec-07,18-Dec-07
+110749,26-Nov-15,88317,Medication Administration,18-Dec-07,18-Dec-07
+110756,30-Nov-15,88318,Physical Examination,22-Dec-07,22-Dec-07
+110763,1-Dec-15,88319,Physical Examination,23-Dec-07,23-Dec-07
+110770,5-Dec-15,88320,Radiology Image,27-Dec-07,27-Dec-07
+110770,5-Dec-15,88321,Electrocardiogram,27-Dec-07,27-Dec-07
+110777,6-Dec-15,88322,Medication Administration,28-Dec-07,28-Dec-07
+110777,6-Dec-15,88323,Culture,28-Dec-07,28-Dec-07
+110784,9-Dec-15,88324,Physical Examination,31-Dec-07,31-Dec-07
+110413,4-Feb-15,,,,26-Feb-07
+110581,18-Jul-15,,,,9-Aug-07
+110721,4-Nov-15,,,,26-Nov-07
